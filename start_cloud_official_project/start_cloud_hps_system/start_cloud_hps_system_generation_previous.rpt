@@ -1,0 +1,116 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate /home/simon/Documents/zandent_git/ARM_HWDESIGN/start_cloud_official_project/start_cloud_hps_system.qsys --block-symbol-file --output-directory=/home/simon/Documents/zandent_git/ARM_HWDESIGN/start_cloud_official_project/start_cloud_hps_system --family="Cyclone V" --part=5CSEMA5F31C6
+Progress: Loading start_cloud_official_project/start_cloud_hps_system.qsys
+Progress: Reading input file
+Progress: Adding HEX0_2_pio [altera_avalon_pio 18.0]
+Progress: Parameterizing module HEX0_2_pio
+Progress: Adding HEX3_5_pio [altera_avalon_pio 18.0]
+Progress: Parameterizing module HEX3_5_pio
+Progress: Adding clk_0 [clock_source 18.0]
+Progress: Parameterizing module clk_0
+Progress: Adding key_pio [altera_avalon_pio 18.0]
+Progress: Parameterizing module key_pio
+Progress: Adding ledr_pio [altera_avalon_pio 18.0]
+Progress: Parameterizing module ledr_pio
+Progress: Adding start_cloud_hps [altera_hps 18.0]
+Progress: Parameterizing module start_cloud_hps
+Progress: Adding sw_pio [altera_avalon_pio 18.0]
+Progress: Parameterizing module sw_pio
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: start_cloud_hps_system.key_pio: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: start_cloud_hps_system.start_cloud_hps: HPS Main PLL counter settings: n = 0  m = 73
+Info: start_cloud_hps_system.start_cloud_hps: HPS peripherial PLL counter settings: n = 0  m = 39
+Warning: start_cloud_hps_system.start_cloud_hps: "Configuration/HPS-to-FPGA user 0 clock frequency" (desired_cfg_clk_mhz) requested 100.0 MHz, but only achieved 97.368421 MHz
+Warning: start_cloud_hps_system.start_cloud_hps: 1 or more output clock frequencies cannot be achieved precisely, consider revising desired output clock frequencies.
+Warning: start_cloud_hps_system.start_cloud_hps: ODT is disabled. Enabling ODT (Mode Register 1) may improve signal integrity
+Info: start_cloud_hps_system.sw_pio: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: qsys-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate /home/simon/Documents/zandent_git/ARM_HWDESIGN/start_cloud_official_project/start_cloud_hps_system.qsys --synthesis=VERILOG --output-directory=/home/simon/Documents/zandent_git/ARM_HWDESIGN/start_cloud_official_project/start_cloud_hps_system/synthesis --family="Cyclone V" --part=5CSEMA5F31C6
+Progress: Loading start_cloud_official_project/start_cloud_hps_system.qsys
+Progress: Reading input file
+Progress: Adding HEX0_2_pio [altera_avalon_pio 18.0]
+Progress: Parameterizing module HEX0_2_pio
+Progress: Adding HEX3_5_pio [altera_avalon_pio 18.0]
+Progress: Parameterizing module HEX3_5_pio
+Progress: Adding clk_0 [clock_source 18.0]
+Progress: Parameterizing module clk_0
+Progress: Adding key_pio [altera_avalon_pio 18.0]
+Progress: Parameterizing module key_pio
+Progress: Adding ledr_pio [altera_avalon_pio 18.0]
+Progress: Parameterizing module ledr_pio
+Progress: Adding start_cloud_hps [altera_hps 18.0]
+Progress: Parameterizing module start_cloud_hps
+Progress: Adding sw_pio [altera_avalon_pio 18.0]
+Progress: Parameterizing module sw_pio
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: start_cloud_hps_system.key_pio: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: start_cloud_hps_system.start_cloud_hps: HPS Main PLL counter settings: n = 0  m = 73
+Info: start_cloud_hps_system.start_cloud_hps: HPS peripherial PLL counter settings: n = 0  m = 39
+Warning: start_cloud_hps_system.start_cloud_hps: "Configuration/HPS-to-FPGA user 0 clock frequency" (desired_cfg_clk_mhz) requested 100.0 MHz, but only achieved 97.368421 MHz
+Warning: start_cloud_hps_system.start_cloud_hps: 1 or more output clock frequencies cannot be achieved precisely, consider revising desired output clock frequencies.
+Warning: start_cloud_hps_system.start_cloud_hps: ODT is disabled. Enabling ODT (Mode Register 1) may improve signal integrity
+Info: start_cloud_hps_system.sw_pio: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: start_cloud_hps_system: Generating start_cloud_hps_system "start_cloud_hps_system" for QUARTUS_SYNTH
+Info: HEX0_2_pio: Starting RTL generation for module 'start_cloud_hps_system_HEX0_2_pio'
+Info: HEX0_2_pio:   Generation command is [exec /home/simon/intelFPGA_lite/18.0/quartus/linux64/perl/bin/perl -I /home/simon/intelFPGA_lite/18.0/quartus/linux64/perl/lib -I /home/simon/intelFPGA_lite/18.0/quartus/sopc_builder/bin/europa -I /home/simon/intelFPGA_lite/18.0/quartus/sopc_builder/bin/perl_lib -I /home/simon/intelFPGA_lite/18.0/quartus/sopc_builder/bin -I /home/simon/intelFPGA_lite/18.0/quartus/../ip/altera/sopc_builder_ip/common -I /home/simon/intelFPGA_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/simon/intelFPGA_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=start_cloud_hps_system_HEX0_2_pio --dir=/tmp/alt7765_8768111856785280076.dir/0002_HEX0_2_pio_gen/ --quartus_dir=/home/simon/intelFPGA_lite/18.0/quartus --verilog --config=/tmp/alt7765_8768111856785280076.dir/0002_HEX0_2_pio_gen//start_cloud_hps_system_HEX0_2_pio_component_configuration.pl  --do_build_sim=0  ]
+Info: HEX0_2_pio: Done RTL generation for module 'start_cloud_hps_system_HEX0_2_pio'
+Info: HEX0_2_pio: "start_cloud_hps_system" instantiated altera_avalon_pio "HEX0_2_pio"
+Info: key_pio: Starting RTL generation for module 'start_cloud_hps_system_key_pio'
+Info: key_pio:   Generation command is [exec /home/simon/intelFPGA_lite/18.0/quartus/linux64/perl/bin/perl -I /home/simon/intelFPGA_lite/18.0/quartus/linux64/perl/lib -I /home/simon/intelFPGA_lite/18.0/quartus/sopc_builder/bin/europa -I /home/simon/intelFPGA_lite/18.0/quartus/sopc_builder/bin/perl_lib -I /home/simon/intelFPGA_lite/18.0/quartus/sopc_builder/bin -I /home/simon/intelFPGA_lite/18.0/quartus/../ip/altera/sopc_builder_ip/common -I /home/simon/intelFPGA_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/simon/intelFPGA_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=start_cloud_hps_system_key_pio --dir=/tmp/alt7765_8768111856785280076.dir/0003_key_pio_gen/ --quartus_dir=/home/simon/intelFPGA_lite/18.0/quartus --verilog --config=/tmp/alt7765_8768111856785280076.dir/0003_key_pio_gen//start_cloud_hps_system_key_pio_component_configuration.pl  --do_build_sim=0  ]
+Info: key_pio: Done RTL generation for module 'start_cloud_hps_system_key_pio'
+Info: key_pio: "start_cloud_hps_system" instantiated altera_avalon_pio "key_pio"
+Info: ledr_pio: Starting RTL generation for module 'start_cloud_hps_system_ledr_pio'
+Info: ledr_pio:   Generation command is [exec /home/simon/intelFPGA_lite/18.0/quartus/linux64/perl/bin/perl -I /home/simon/intelFPGA_lite/18.0/quartus/linux64/perl/lib -I /home/simon/intelFPGA_lite/18.0/quartus/sopc_builder/bin/europa -I /home/simon/intelFPGA_lite/18.0/quartus/sopc_builder/bin/perl_lib -I /home/simon/intelFPGA_lite/18.0/quartus/sopc_builder/bin -I /home/simon/intelFPGA_lite/18.0/quartus/../ip/altera/sopc_builder_ip/common -I /home/simon/intelFPGA_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/simon/intelFPGA_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=start_cloud_hps_system_ledr_pio --dir=/tmp/alt7765_8768111856785280076.dir/0004_ledr_pio_gen/ --quartus_dir=/home/simon/intelFPGA_lite/18.0/quartus --verilog --config=/tmp/alt7765_8768111856785280076.dir/0004_ledr_pio_gen//start_cloud_hps_system_ledr_pio_component_configuration.pl  --do_build_sim=0  ]
+Info: ledr_pio: Done RTL generation for module 'start_cloud_hps_system_ledr_pio'
+Info: ledr_pio: "start_cloud_hps_system" instantiated altera_avalon_pio "ledr_pio"
+Info: start_cloud_hps: "Running  for module: start_cloud_hps"
+Info: start_cloud_hps: HPS Main PLL counter settings: n = 0  m = 73
+Info: start_cloud_hps: HPS peripherial PLL counter settings: n = 0  m = 39
+Warning: start_cloud_hps: "Configuration/HPS-to-FPGA user 0 clock frequency" (desired_cfg_clk_mhz) requested 100.0 MHz, but only achieved 97.368421 MHz
+Warning: start_cloud_hps: 1 or more output clock frequencies cannot be achieved precisely, consider revising desired output clock frequencies.
+Warning: start_cloud_hps: ODT is disabled. Enabling ODT (Mode Register 1) may improve signal integrity
+Info: start_cloud_hps: "start_cloud_hps_system" instantiated altera_hps "start_cloud_hps"
+Info: sw_pio: Starting RTL generation for module 'start_cloud_hps_system_sw_pio'
+Info: sw_pio:   Generation command is [exec /home/simon/intelFPGA_lite/18.0/quartus/linux64/perl/bin/perl -I /home/simon/intelFPGA_lite/18.0/quartus/linux64/perl/lib -I /home/simon/intelFPGA_lite/18.0/quartus/sopc_builder/bin/europa -I /home/simon/intelFPGA_lite/18.0/quartus/sopc_builder/bin/perl_lib -I /home/simon/intelFPGA_lite/18.0/quartus/sopc_builder/bin -I /home/simon/intelFPGA_lite/18.0/quartus/../ip/altera/sopc_builder_ip/common -I /home/simon/intelFPGA_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/simon/intelFPGA_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=start_cloud_hps_system_sw_pio --dir=/tmp/alt7765_8768111856785280076.dir/0005_sw_pio_gen/ --quartus_dir=/home/simon/intelFPGA_lite/18.0/quartus --verilog --config=/tmp/alt7765_8768111856785280076.dir/0005_sw_pio_gen//start_cloud_hps_system_sw_pio_component_configuration.pl  --do_build_sim=0  ]
+Info: sw_pio: Done RTL generation for module 'start_cloud_hps_system_sw_pio'
+Info: sw_pio: "start_cloud_hps_system" instantiated altera_avalon_pio "sw_pio"
+Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_003: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_004: Inserting error_adapter: error_adapter_0
+Info: mm_interconnect_0: "start_cloud_hps_system" instantiated altera_mm_interconnect "mm_interconnect_0"
+Info: rst_controller: "start_cloud_hps_system" instantiated altera_reset_controller "rst_controller"
+Info: fpga_interfaces: "start_cloud_hps" instantiated altera_interface_generator "fpga_interfaces"
+Info: hps_io: "start_cloud_hps" instantiated altera_hps_io "hps_io"
+Info: ledr_pio_s1_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "ledr_pio_s1_translator"
+Info: start_cloud_hps_h2f_lw_axi_master_agent: "mm_interconnect_0" instantiated altera_merlin_axi_master_ni "start_cloud_hps_h2f_lw_axi_master_agent"
+Info: ledr_pio_s1_agent: "mm_interconnect_0" instantiated altera_merlin_slave_agent "ledr_pio_s1_agent"
+Info: ledr_pio_s1_agent_rsp_fifo: "mm_interconnect_0" instantiated altera_avalon_sc_fifo "ledr_pio_s1_agent_rsp_fifo"
+Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
+Info: router_002: "mm_interconnect_0" instantiated altera_merlin_router "router_002"
+Info: start_cloud_hps_h2f_lw_axi_master_wr_limiter: "mm_interconnect_0" instantiated altera_merlin_traffic_limiter "start_cloud_hps_h2f_lw_axi_master_wr_limiter"
+Info: Reusing file /home/simon/Documents/zandent_git/ARM_HWDESIGN/start_cloud_official_project/start_cloud_hps_system/synthesis/submodules/altera_avalon_sc_fifo.v
+Info: ledr_pio_s1_burst_adapter: "mm_interconnect_0" instantiated altera_merlin_burst_adapter "ledr_pio_s1_burst_adapter"
+Info: Reusing file /home/simon/Documents/zandent_git/ARM_HWDESIGN/start_cloud_official_project/start_cloud_hps_system/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: Reusing file /home/simon/Documents/zandent_git/ARM_HWDESIGN/start_cloud_official_project/start_cloud_hps_system/synthesis/submodules/altera_avalon_st_pipeline_base.v
+Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
+Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
+Info: rsp_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux"
+Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
+Info: Reusing file /home/simon/Documents/zandent_git/ARM_HWDESIGN/start_cloud_official_project/start_cloud_hps_system/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
+Info: border: "hps_io" instantiated altera_interface_generator "border"
+Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
+Info: start_cloud_hps_system: Done "start_cloud_hps_system" with 25 modules, 82 files
+Info: qsys-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

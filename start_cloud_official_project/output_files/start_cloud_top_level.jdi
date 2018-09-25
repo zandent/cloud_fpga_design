@@ -1,0 +1,16 @@
+<sld_project_info>
+  <project>
+    <hash md5_digest_80b="2f8c1e0b658881d933a9"/>
+  </project>
+  <file_info>
+    <file device="5CSEMA5F31C6" path="start_cloud_top_level.sof" usercode="0xFFFFFFFF"/>
+  </file_info>
+  <sld_infos>
+    <sld_info hpath="start_cloud_hps_system:u0" name="u0">
+      <assignment_values>
+        <assignment_value text="QSYS_NAME start_cloud_hps_system HAS_SOPCINFO 1 GENERATION_ID 1535050983"/>
+      </assignment_values>
+      <parameters/>
+    </sld_info>
+  </sld_infos>
+</sld_project_info>
