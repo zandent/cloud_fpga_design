@@ -1,4 +1,4 @@
-# Remote HPS-controlled Reprogrammable and Debugging FPGA project
+# Remote HPS-controlled Debuggable and Reprogrammable FPGA project
 
 ## Objective
 
