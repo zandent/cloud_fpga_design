@@ -97,6 +97,22 @@
          type = "String";
       }
    }
+   element vga_user_pio
+   {
+      datum _sortIndex
+      {
+         value = "7";
+         type = "int";
+      }
+   }
+   element vga_user_pio.s1
+   {
+      datum baseAddress
+      {
+         value = "80";
+         type = "String";
+      }
+   }
 }
 ]]></parameter>
  <parameter name="clockCrossingAdapter" value="HANDSHAKE" />
@@ -153,6 +169,11 @@
  <interface
    name="sw"
    internal="sw_pio.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="vga_user"
+   internal="vga_user_pio.external_connection"
    type="conduit"
    dir="end" />
  <module name="HEX0_2_pio" kind="altera_avalon_pio" version="18.0" enabled="1">
@@ -761,6 +782,24 @@
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="10" />
  </module>
+ <module
+   name="vga_user_pio"
+   kind="altera_avalon_pio"
+   version="18.0"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="22" />
+ </module>
  <connection
    kind="avalon"
    version="18.0"
@@ -806,11 +845,21 @@
   <parameter name="baseAddress" value="0x0040" />
   <parameter name="defaultConnection" value="false" />
  </connection>
+ <connection
+   kind="avalon"
+   version="18.0"
+   start="start_cloud_hps.h2f_lw_axi_master"
+   end="vga_user_pio.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0050" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
  <connection kind="clock" version="18.0" start="clk_0.clk" end="ledr_pio.clk" />
  <connection kind="clock" version="18.0" start="clk_0.clk" end="sw_pio.clk" />
  <connection kind="clock" version="18.0" start="clk_0.clk" end="key_pio.clk" />
  <connection kind="clock" version="18.0" start="clk_0.clk" end="HEX0_2_pio.clk" />
  <connection kind="clock" version="18.0" start="clk_0.clk" end="HEX3_5_pio.clk" />
+ <connection kind="clock" version="18.0" start="clk_0.clk" end="vga_user_pio.clk" />
  <connection
    kind="clock"
    version="18.0"
@@ -841,6 +890,11 @@
    version="18.0"
    start="clk_0.clk_reset"
    end="HEX3_5_pio.reset" />
+ <connection
+   kind="reset"
+   version="18.0"
+   start="clk_0.clk_reset"
+   end="vga_user_pio.reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />

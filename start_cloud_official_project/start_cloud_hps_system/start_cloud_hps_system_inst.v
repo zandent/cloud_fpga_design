@@ -29,6 +29,7 @@
 		.memory_mem_dm                 (<connected-to-memory_mem_dm>),                 //         .mem_dm
 		.memory_oct_rzqin              (<connected-to-memory_oct_rzqin>),              //         .oct_rzqin
 		.reset_reset_n                 (<connected-to-reset_reset_n>),                 //    reset.reset_n
-		.sw_export                     (<connected-to-sw_export>)                      //       sw.export
+		.sw_export                     (<connected-to-sw_export>),                     //       sw.export
+		.vga_user_export               (<connected-to-vga_user_export>)                // vga_user.export
 	);
 

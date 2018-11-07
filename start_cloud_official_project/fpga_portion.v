@@ -8,7 +8,12 @@ module fpga_portion(
 	output      [6:0]  HEX2,
 	output      [6:0]  HEX3,
 	output      [6:0]  HEX4,
-	output      [6:0]  HEX5
+	output      [6:0]  HEX5,
+	output      vga_resolution_mode, // '0' represents 160x120, '1' represents 320x240
+	output      [2:0] colour,
+	output        [8:0] x, //bit 8 useless if 160x120
+	output        [7:0] y, //bit 7 useless if 160x120
+	output        writeEn
 );
     assign LEDR = SW;
     //assign HEX0 = 7'b1111111;

@@ -58,17 +58,17 @@ preplace inst start_cloud_hps_system.ledr_pio -pg 1 -lvl 3 -y 270
 preplace inst start_cloud_hps_system.start_cloud_hps.usb1 -pg 1
 preplace inst start_cloud_hps_system.start_cloud_hps.f2s_periph_ref_clk -pg 1
 preplace inst start_cloud_hps_system.start_cloud_hps.eosc2 -pg 1
+preplace netloc EXPORT<net_container>start_cloud_hps_system</net_container>(SLAVE)sw_pio.external_connection,(SLAVE)start_cloud_hps_system.sw) 1 0 3 NJ 400 NJ 400 NJ
+preplace netloc EXPORT<net_container>start_cloud_hps_system</net_container>(SLAVE)start_cloud_hps.memory,(SLAVE)start_cloud_hps_system.memory) 1 0 2 NJ 210 NJ
 preplace netloc EXPORT<net_container>start_cloud_hps_system</net_container>(SLAVE)ledr_pio.external_connection,(SLAVE)start_cloud_hps_system.ledr) 1 0 3 NJ 300 NJ 300 NJ
-preplace netloc EXPORT<net_container>start_cloud_hps_system</net_container>(SLAVE)start_cloud_hps_system.clk,(SLAVE)clk_0.clk_in) 1 0 1 NJ
-preplace netloc EXPORT<net_container>start_cloud_hps_system</net_container>(SLAVE)key_pio.external_connection,(SLAVE)start_cloud_hps_system.key) 1 0 3 NJ 500 NJ 500 NJ
-preplace netloc EXPORT<net_container>start_cloud_hps_system</net_container>(SLAVE)HEX3_5_pio.external_connection,(SLAVE)start_cloud_hps_system.hex3_5) 1 0 3 NJ 80 NJ 80 NJ
-preplace netloc EXPORT<net_container>start_cloud_hps_system</net_container>(SLAVE)start_cloud_hps_system.sw,(SLAVE)sw_pio.external_connection) 1 0 3 NJ 400 NJ 400 NJ
-preplace netloc EXPORT<net_container>start_cloud_hps_system</net_container>(SLAVE)start_cloud_hps_system.memory,(SLAVE)start_cloud_hps.memory) 1 0 2 NJ 210 NJ
-preplace netloc EXPORT<net_container>start_cloud_hps_system</net_container>(SLAVE)HEX0_2_pio.external_connection,(SLAVE)start_cloud_hps_system.hex0_2) 1 0 3 NJ 60 NJ 60 NJ
-preplace netloc FAN_OUT<net_container>start_cloud_hps_system</net_container>(SLAVE)HEX3_5_pio.clk,(SLAVE)sw_pio.clk,(SLAVE)start_cloud_hps.h2f_lw_axi_clock,(SLAVE)HEX0_2_pio.clk,(SLAVE)key_pio.clk,(SLAVE)ledr_pio.clk,(MASTER)clk_0.clk) 1 1 2 270 100 600
-preplace netloc FAN_OUT<net_container>start_cloud_hps_system</net_container>(MASTER)start_cloud_hps.h2f_lw_axi_master,(SLAVE)HEX0_2_pio.s1,(SLAVE)key_pio.s1,(SLAVE)ledr_pio.s1,(SLAVE)sw_pio.s1,(SLAVE)HEX3_5_pio.s1) 1 2 1 620
+preplace netloc EXPORT<net_container>start_cloud_hps_system</net_container>(SLAVE)start_cloud_hps_system.key,(SLAVE)key_pio.external_connection) 1 0 3 NJ 500 NJ 500 NJ
+preplace netloc EXPORT<net_container>start_cloud_hps_system</net_container>(SLAVE)start_cloud_hps_system.hex0_2,(SLAVE)HEX0_2_pio.external_connection) 1 0 3 NJ 60 NJ 60 NJ
+preplace netloc EXPORT<net_container>start_cloud_hps_system</net_container>(SLAVE)clk_0.clk_in,(SLAVE)start_cloud_hps_system.clk) 1 0 1 NJ
+preplace netloc FAN_OUT<net_container>start_cloud_hps_system</net_container>(SLAVE)ledr_pio.s1,(SLAVE)sw_pio.s1,(SLAVE)HEX0_2_pio.s1,(SLAVE)HEX3_5_pio.s1,(MASTER)start_cloud_hps.h2f_lw_axi_master,(SLAVE)key_pio.s1) 1 2 1 620
+preplace netloc EXPORT<net_container>start_cloud_hps_system</net_container>(SLAVE)start_cloud_hps_system.hex3_5,(SLAVE)HEX3_5_pio.external_connection) 1 0 3 NJ 80 NJ 80 NJ
+preplace netloc FAN_OUT<net_container>start_cloud_hps_system</net_container>(MASTER)clk_0.clk_reset,(SLAVE)key_pio.reset,(SLAVE)HEX0_2_pio.reset,(SLAVE)sw_pio.reset,(SLAVE)HEX3_5_pio.reset,(SLAVE)ledr_pio.reset) 1 1 2 N 120 660
+preplace netloc FAN_OUT<net_container>start_cloud_hps_system</net_container>(MASTER)clk_0.clk,(SLAVE)ledr_pio.clk,(SLAVE)HEX0_2_pio.clk,(SLAVE)start_cloud_hps.h2f_lw_axi_clock,(SLAVE)HEX3_5_pio.clk,(SLAVE)key_pio.clk,(SLAVE)sw_pio.clk) 1 1 2 270 100 600
 preplace netloc EXPORT<net_container>start_cloud_hps_system</net_container>(SLAVE)start_cloud_hps_system.hps_io_0,(SLAVE)start_cloud_hps.hps_io) 1 0 2 NJ 170 NJ
 preplace netloc EXPORT<net_container>start_cloud_hps_system</net_container>(SLAVE)clk_0.clk_in_reset,(SLAVE)start_cloud_hps_system.reset) 1 0 1 NJ
-preplace netloc FAN_OUT<net_container>start_cloud_hps_system</net_container>(SLAVE)ledr_pio.reset,(SLAVE)sw_pio.reset,(SLAVE)key_pio.reset,(SLAVE)HEX0_2_pio.reset,(SLAVE)HEX3_5_pio.reset,(MASTER)clk_0.clk_reset) 1 1 2 N 120 660
 levelinfo -pg 1 0 60 850
 levelinfo -hier start_cloud_hps_system 70 100 410 690 840

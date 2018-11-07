@@ -34,64 +34,67 @@ module start_cloud_hps_system (
 		output wire        memory_mem_dm,                 //         .mem_dm
 		input  wire        memory_oct_rzqin,              //         .oct_rzqin
 		input  wire        reset_reset_n,                 //    reset.reset_n
-		output wire [9:0]  sw_export                      //       sw.export
+		output wire [9:0]  sw_export,                     //       sw.export
+		input  wire [21:0] vga_user_export                // vga_user.export
 	);
 
-	wire   [1:0] start_cloud_hps_h2f_lw_axi_master_awburst; // start_cloud_hps:h2f_lw_AWBURST -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_awburst
-	wire   [3:0] start_cloud_hps_h2f_lw_axi_master_arlen;   // start_cloud_hps:h2f_lw_ARLEN -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_arlen
-	wire   [3:0] start_cloud_hps_h2f_lw_axi_master_wstrb;   // start_cloud_hps:h2f_lw_WSTRB -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_wstrb
-	wire         start_cloud_hps_h2f_lw_axi_master_wready;  // mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_wready -> start_cloud_hps:h2f_lw_WREADY
-	wire  [11:0] start_cloud_hps_h2f_lw_axi_master_rid;     // mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_rid -> start_cloud_hps:h2f_lw_RID
-	wire         start_cloud_hps_h2f_lw_axi_master_rready;  // start_cloud_hps:h2f_lw_RREADY -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_rready
-	wire   [3:0] start_cloud_hps_h2f_lw_axi_master_awlen;   // start_cloud_hps:h2f_lw_AWLEN -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_awlen
-	wire  [11:0] start_cloud_hps_h2f_lw_axi_master_wid;     // start_cloud_hps:h2f_lw_WID -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_wid
-	wire   [3:0] start_cloud_hps_h2f_lw_axi_master_arcache; // start_cloud_hps:h2f_lw_ARCACHE -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_arcache
-	wire         start_cloud_hps_h2f_lw_axi_master_wvalid;  // start_cloud_hps:h2f_lw_WVALID -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_wvalid
-	wire  [20:0] start_cloud_hps_h2f_lw_axi_master_araddr;  // start_cloud_hps:h2f_lw_ARADDR -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_araddr
-	wire   [2:0] start_cloud_hps_h2f_lw_axi_master_arprot;  // start_cloud_hps:h2f_lw_ARPROT -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_arprot
-	wire   [2:0] start_cloud_hps_h2f_lw_axi_master_awprot;  // start_cloud_hps:h2f_lw_AWPROT -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_awprot
-	wire  [31:0] start_cloud_hps_h2f_lw_axi_master_wdata;   // start_cloud_hps:h2f_lw_WDATA -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_wdata
-	wire         start_cloud_hps_h2f_lw_axi_master_arvalid; // start_cloud_hps:h2f_lw_ARVALID -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_arvalid
-	wire   [3:0] start_cloud_hps_h2f_lw_axi_master_awcache; // start_cloud_hps:h2f_lw_AWCACHE -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_awcache
-	wire  [11:0] start_cloud_hps_h2f_lw_axi_master_arid;    // start_cloud_hps:h2f_lw_ARID -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_arid
-	wire   [1:0] start_cloud_hps_h2f_lw_axi_master_arlock;  // start_cloud_hps:h2f_lw_ARLOCK -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_arlock
-	wire   [1:0] start_cloud_hps_h2f_lw_axi_master_awlock;  // start_cloud_hps:h2f_lw_AWLOCK -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_awlock
-	wire  [20:0] start_cloud_hps_h2f_lw_axi_master_awaddr;  // start_cloud_hps:h2f_lw_AWADDR -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_awaddr
-	wire   [1:0] start_cloud_hps_h2f_lw_axi_master_bresp;   // mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_bresp -> start_cloud_hps:h2f_lw_BRESP
-	wire         start_cloud_hps_h2f_lw_axi_master_arready; // mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_arready -> start_cloud_hps:h2f_lw_ARREADY
-	wire  [31:0] start_cloud_hps_h2f_lw_axi_master_rdata;   // mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_rdata -> start_cloud_hps:h2f_lw_RDATA
-	wire         start_cloud_hps_h2f_lw_axi_master_awready; // mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_awready -> start_cloud_hps:h2f_lw_AWREADY
-	wire   [1:0] start_cloud_hps_h2f_lw_axi_master_arburst; // start_cloud_hps:h2f_lw_ARBURST -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_arburst
-	wire   [2:0] start_cloud_hps_h2f_lw_axi_master_arsize;  // start_cloud_hps:h2f_lw_ARSIZE -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_arsize
-	wire         start_cloud_hps_h2f_lw_axi_master_bready;  // start_cloud_hps:h2f_lw_BREADY -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_bready
-	wire         start_cloud_hps_h2f_lw_axi_master_rlast;   // mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_rlast -> start_cloud_hps:h2f_lw_RLAST
-	wire         start_cloud_hps_h2f_lw_axi_master_wlast;   // start_cloud_hps:h2f_lw_WLAST -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_wlast
-	wire   [1:0] start_cloud_hps_h2f_lw_axi_master_rresp;   // mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_rresp -> start_cloud_hps:h2f_lw_RRESP
-	wire  [11:0] start_cloud_hps_h2f_lw_axi_master_awid;    // start_cloud_hps:h2f_lw_AWID -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_awid
-	wire  [11:0] start_cloud_hps_h2f_lw_axi_master_bid;     // mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_bid -> start_cloud_hps:h2f_lw_BID
-	wire         start_cloud_hps_h2f_lw_axi_master_bvalid;  // mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_bvalid -> start_cloud_hps:h2f_lw_BVALID
-	wire   [2:0] start_cloud_hps_h2f_lw_axi_master_awsize;  // start_cloud_hps:h2f_lw_AWSIZE -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_awsize
-	wire         start_cloud_hps_h2f_lw_axi_master_awvalid; // start_cloud_hps:h2f_lw_AWVALID -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_awvalid
-	wire         start_cloud_hps_h2f_lw_axi_master_rvalid;  // mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_rvalid -> start_cloud_hps:h2f_lw_RVALID
-	wire  [31:0] mm_interconnect_0_ledr_pio_s1_readdata;    // ledr_pio:readdata -> mm_interconnect_0:ledr_pio_s1_readdata
-	wire   [1:0] mm_interconnect_0_ledr_pio_s1_address;     // mm_interconnect_0:ledr_pio_s1_address -> ledr_pio:address
-	wire         mm_interconnect_0_sw_pio_s1_chipselect;    // mm_interconnect_0:sw_pio_s1_chipselect -> sw_pio:chipselect
-	wire  [31:0] mm_interconnect_0_sw_pio_s1_readdata;      // sw_pio:readdata -> mm_interconnect_0:sw_pio_s1_readdata
-	wire   [1:0] mm_interconnect_0_sw_pio_s1_address;       // mm_interconnect_0:sw_pio_s1_address -> sw_pio:address
-	wire         mm_interconnect_0_sw_pio_s1_write;         // mm_interconnect_0:sw_pio_s1_write -> sw_pio:write_n
-	wire  [31:0] mm_interconnect_0_sw_pio_s1_writedata;     // mm_interconnect_0:sw_pio_s1_writedata -> sw_pio:writedata
-	wire         mm_interconnect_0_key_pio_s1_chipselect;   // mm_interconnect_0:key_pio_s1_chipselect -> key_pio:chipselect
-	wire  [31:0] mm_interconnect_0_key_pio_s1_readdata;     // key_pio:readdata -> mm_interconnect_0:key_pio_s1_readdata
-	wire   [1:0] mm_interconnect_0_key_pio_s1_address;      // mm_interconnect_0:key_pio_s1_address -> key_pio:address
-	wire         mm_interconnect_0_key_pio_s1_write;        // mm_interconnect_0:key_pio_s1_write -> key_pio:write_n
-	wire  [31:0] mm_interconnect_0_key_pio_s1_writedata;    // mm_interconnect_0:key_pio_s1_writedata -> key_pio:writedata
-	wire  [31:0] mm_interconnect_0_hex0_2_pio_s1_readdata;  // HEX0_2_pio:readdata -> mm_interconnect_0:HEX0_2_pio_s1_readdata
-	wire   [1:0] mm_interconnect_0_hex0_2_pio_s1_address;   // mm_interconnect_0:HEX0_2_pio_s1_address -> HEX0_2_pio:address
-	wire  [31:0] mm_interconnect_0_hex3_5_pio_s1_readdata;  // HEX3_5_pio:readdata -> mm_interconnect_0:HEX3_5_pio_s1_readdata
-	wire   [1:0] mm_interconnect_0_hex3_5_pio_s1_address;   // mm_interconnect_0:HEX3_5_pio_s1_address -> HEX3_5_pio:address
-	wire         rst_controller_reset_out_reset;            // rst_controller:reset_out -> [HEX0_2_pio:reset_n, HEX3_5_pio:reset_n, key_pio:reset_n, ledr_pio:reset_n, mm_interconnect_0:ledr_pio_reset_reset_bridge_in_reset_reset, sw_pio:reset_n]
-	wire         rst_controller_001_reset_out_reset;        // rst_controller_001:reset_out -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_agent_clk_reset_reset_bridge_in_reset_reset
-	wire         start_cloud_hps_h2f_reset_reset;           // start_cloud_hps:h2f_rst_n -> rst_controller_001:reset_in0
+	wire   [1:0] start_cloud_hps_h2f_lw_axi_master_awburst;  // start_cloud_hps:h2f_lw_AWBURST -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_awburst
+	wire   [3:0] start_cloud_hps_h2f_lw_axi_master_arlen;    // start_cloud_hps:h2f_lw_ARLEN -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_arlen
+	wire   [3:0] start_cloud_hps_h2f_lw_axi_master_wstrb;    // start_cloud_hps:h2f_lw_WSTRB -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_wstrb
+	wire         start_cloud_hps_h2f_lw_axi_master_wready;   // mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_wready -> start_cloud_hps:h2f_lw_WREADY
+	wire  [11:0] start_cloud_hps_h2f_lw_axi_master_rid;      // mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_rid -> start_cloud_hps:h2f_lw_RID
+	wire         start_cloud_hps_h2f_lw_axi_master_rready;   // start_cloud_hps:h2f_lw_RREADY -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_rready
+	wire   [3:0] start_cloud_hps_h2f_lw_axi_master_awlen;    // start_cloud_hps:h2f_lw_AWLEN -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_awlen
+	wire  [11:0] start_cloud_hps_h2f_lw_axi_master_wid;      // start_cloud_hps:h2f_lw_WID -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_wid
+	wire   [3:0] start_cloud_hps_h2f_lw_axi_master_arcache;  // start_cloud_hps:h2f_lw_ARCACHE -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_arcache
+	wire         start_cloud_hps_h2f_lw_axi_master_wvalid;   // start_cloud_hps:h2f_lw_WVALID -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_wvalid
+	wire  [20:0] start_cloud_hps_h2f_lw_axi_master_araddr;   // start_cloud_hps:h2f_lw_ARADDR -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_araddr
+	wire   [2:0] start_cloud_hps_h2f_lw_axi_master_arprot;   // start_cloud_hps:h2f_lw_ARPROT -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_arprot
+	wire   [2:0] start_cloud_hps_h2f_lw_axi_master_awprot;   // start_cloud_hps:h2f_lw_AWPROT -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_awprot
+	wire  [31:0] start_cloud_hps_h2f_lw_axi_master_wdata;    // start_cloud_hps:h2f_lw_WDATA -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_wdata
+	wire         start_cloud_hps_h2f_lw_axi_master_arvalid;  // start_cloud_hps:h2f_lw_ARVALID -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_arvalid
+	wire   [3:0] start_cloud_hps_h2f_lw_axi_master_awcache;  // start_cloud_hps:h2f_lw_AWCACHE -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_awcache
+	wire  [11:0] start_cloud_hps_h2f_lw_axi_master_arid;     // start_cloud_hps:h2f_lw_ARID -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_arid
+	wire   [1:0] start_cloud_hps_h2f_lw_axi_master_arlock;   // start_cloud_hps:h2f_lw_ARLOCK -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_arlock
+	wire   [1:0] start_cloud_hps_h2f_lw_axi_master_awlock;   // start_cloud_hps:h2f_lw_AWLOCK -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_awlock
+	wire  [20:0] start_cloud_hps_h2f_lw_axi_master_awaddr;   // start_cloud_hps:h2f_lw_AWADDR -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_awaddr
+	wire   [1:0] start_cloud_hps_h2f_lw_axi_master_bresp;    // mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_bresp -> start_cloud_hps:h2f_lw_BRESP
+	wire         start_cloud_hps_h2f_lw_axi_master_arready;  // mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_arready -> start_cloud_hps:h2f_lw_ARREADY
+	wire  [31:0] start_cloud_hps_h2f_lw_axi_master_rdata;    // mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_rdata -> start_cloud_hps:h2f_lw_RDATA
+	wire         start_cloud_hps_h2f_lw_axi_master_awready;  // mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_awready -> start_cloud_hps:h2f_lw_AWREADY
+	wire   [1:0] start_cloud_hps_h2f_lw_axi_master_arburst;  // start_cloud_hps:h2f_lw_ARBURST -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_arburst
+	wire   [2:0] start_cloud_hps_h2f_lw_axi_master_arsize;   // start_cloud_hps:h2f_lw_ARSIZE -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_arsize
+	wire         start_cloud_hps_h2f_lw_axi_master_bready;   // start_cloud_hps:h2f_lw_BREADY -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_bready
+	wire         start_cloud_hps_h2f_lw_axi_master_rlast;    // mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_rlast -> start_cloud_hps:h2f_lw_RLAST
+	wire         start_cloud_hps_h2f_lw_axi_master_wlast;    // start_cloud_hps:h2f_lw_WLAST -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_wlast
+	wire   [1:0] start_cloud_hps_h2f_lw_axi_master_rresp;    // mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_rresp -> start_cloud_hps:h2f_lw_RRESP
+	wire  [11:0] start_cloud_hps_h2f_lw_axi_master_awid;     // start_cloud_hps:h2f_lw_AWID -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_awid
+	wire  [11:0] start_cloud_hps_h2f_lw_axi_master_bid;      // mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_bid -> start_cloud_hps:h2f_lw_BID
+	wire         start_cloud_hps_h2f_lw_axi_master_bvalid;   // mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_bvalid -> start_cloud_hps:h2f_lw_BVALID
+	wire   [2:0] start_cloud_hps_h2f_lw_axi_master_awsize;   // start_cloud_hps:h2f_lw_AWSIZE -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_awsize
+	wire         start_cloud_hps_h2f_lw_axi_master_awvalid;  // start_cloud_hps:h2f_lw_AWVALID -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_awvalid
+	wire         start_cloud_hps_h2f_lw_axi_master_rvalid;   // mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_rvalid -> start_cloud_hps:h2f_lw_RVALID
+	wire  [31:0] mm_interconnect_0_ledr_pio_s1_readdata;     // ledr_pio:readdata -> mm_interconnect_0:ledr_pio_s1_readdata
+	wire   [1:0] mm_interconnect_0_ledr_pio_s1_address;      // mm_interconnect_0:ledr_pio_s1_address -> ledr_pio:address
+	wire         mm_interconnect_0_sw_pio_s1_chipselect;     // mm_interconnect_0:sw_pio_s1_chipselect -> sw_pio:chipselect
+	wire  [31:0] mm_interconnect_0_sw_pio_s1_readdata;       // sw_pio:readdata -> mm_interconnect_0:sw_pio_s1_readdata
+	wire   [1:0] mm_interconnect_0_sw_pio_s1_address;        // mm_interconnect_0:sw_pio_s1_address -> sw_pio:address
+	wire         mm_interconnect_0_sw_pio_s1_write;          // mm_interconnect_0:sw_pio_s1_write -> sw_pio:write_n
+	wire  [31:0] mm_interconnect_0_sw_pio_s1_writedata;      // mm_interconnect_0:sw_pio_s1_writedata -> sw_pio:writedata
+	wire         mm_interconnect_0_key_pio_s1_chipselect;    // mm_interconnect_0:key_pio_s1_chipselect -> key_pio:chipselect
+	wire  [31:0] mm_interconnect_0_key_pio_s1_readdata;      // key_pio:readdata -> mm_interconnect_0:key_pio_s1_readdata
+	wire   [1:0] mm_interconnect_0_key_pio_s1_address;       // mm_interconnect_0:key_pio_s1_address -> key_pio:address
+	wire         mm_interconnect_0_key_pio_s1_write;         // mm_interconnect_0:key_pio_s1_write -> key_pio:write_n
+	wire  [31:0] mm_interconnect_0_key_pio_s1_writedata;     // mm_interconnect_0:key_pio_s1_writedata -> key_pio:writedata
+	wire  [31:0] mm_interconnect_0_hex0_2_pio_s1_readdata;   // HEX0_2_pio:readdata -> mm_interconnect_0:HEX0_2_pio_s1_readdata
+	wire   [1:0] mm_interconnect_0_hex0_2_pio_s1_address;    // mm_interconnect_0:HEX0_2_pio_s1_address -> HEX0_2_pio:address
+	wire  [31:0] mm_interconnect_0_hex3_5_pio_s1_readdata;   // HEX3_5_pio:readdata -> mm_interconnect_0:HEX3_5_pio_s1_readdata
+	wire   [1:0] mm_interconnect_0_hex3_5_pio_s1_address;    // mm_interconnect_0:HEX3_5_pio_s1_address -> HEX3_5_pio:address
+	wire  [31:0] mm_interconnect_0_vga_user_pio_s1_readdata; // vga_user_pio:readdata -> mm_interconnect_0:vga_user_pio_s1_readdata
+	wire   [1:0] mm_interconnect_0_vga_user_pio_s1_address;  // mm_interconnect_0:vga_user_pio_s1_address -> vga_user_pio:address
+	wire         rst_controller_reset_out_reset;             // rst_controller:reset_out -> [HEX0_2_pio:reset_n, HEX3_5_pio:reset_n, key_pio:reset_n, ledr_pio:reset_n, mm_interconnect_0:ledr_pio_reset_reset_bridge_in_reset_reset, sw_pio:reset_n, vga_user_pio:reset_n]
+	wire         rst_controller_001_reset_out_reset;         // rst_controller_001:reset_out -> mm_interconnect_0:start_cloud_hps_h2f_lw_axi_master_agent_clk_reset_reset_bridge_in_reset_reset
+	wire         start_cloud_hps_h2f_reset_reset;            // start_cloud_hps:h2f_rst_n -> rst_controller_001:reset_in0
 
 	start_cloud_hps_system_HEX0_2_pio hex0_2_pio (
 		.clk      (clk_clk),                                  //                 clk.clk
@@ -207,62 +210,72 @@ module start_cloud_hps_system (
 		.out_port   (sw_export)                               // external_connection.export
 	);
 
+	start_cloud_hps_system_vga_user_pio vga_user_pio (
+		.clk      (clk_clk),                                    //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),            //               reset.reset_n
+		.address  (mm_interconnect_0_vga_user_pio_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_0_vga_user_pio_s1_readdata), //                    .readdata
+		.in_port  (vga_user_export)                             // external_connection.export
+	);
+
 	start_cloud_hps_system_mm_interconnect_0 mm_interconnect_0 (
-		.start_cloud_hps_h2f_lw_axi_master_awid                                        (start_cloud_hps_h2f_lw_axi_master_awid),    //                                       start_cloud_hps_h2f_lw_axi_master.awid
-		.start_cloud_hps_h2f_lw_axi_master_awaddr                                      (start_cloud_hps_h2f_lw_axi_master_awaddr),  //                                                                        .awaddr
-		.start_cloud_hps_h2f_lw_axi_master_awlen                                       (start_cloud_hps_h2f_lw_axi_master_awlen),   //                                                                        .awlen
-		.start_cloud_hps_h2f_lw_axi_master_awsize                                      (start_cloud_hps_h2f_lw_axi_master_awsize),  //                                                                        .awsize
-		.start_cloud_hps_h2f_lw_axi_master_awburst                                     (start_cloud_hps_h2f_lw_axi_master_awburst), //                                                                        .awburst
-		.start_cloud_hps_h2f_lw_axi_master_awlock                                      (start_cloud_hps_h2f_lw_axi_master_awlock),  //                                                                        .awlock
-		.start_cloud_hps_h2f_lw_axi_master_awcache                                     (start_cloud_hps_h2f_lw_axi_master_awcache), //                                                                        .awcache
-		.start_cloud_hps_h2f_lw_axi_master_awprot                                      (start_cloud_hps_h2f_lw_axi_master_awprot),  //                                                                        .awprot
-		.start_cloud_hps_h2f_lw_axi_master_awvalid                                     (start_cloud_hps_h2f_lw_axi_master_awvalid), //                                                                        .awvalid
-		.start_cloud_hps_h2f_lw_axi_master_awready                                     (start_cloud_hps_h2f_lw_axi_master_awready), //                                                                        .awready
-		.start_cloud_hps_h2f_lw_axi_master_wid                                         (start_cloud_hps_h2f_lw_axi_master_wid),     //                                                                        .wid
-		.start_cloud_hps_h2f_lw_axi_master_wdata                                       (start_cloud_hps_h2f_lw_axi_master_wdata),   //                                                                        .wdata
-		.start_cloud_hps_h2f_lw_axi_master_wstrb                                       (start_cloud_hps_h2f_lw_axi_master_wstrb),   //                                                                        .wstrb
-		.start_cloud_hps_h2f_lw_axi_master_wlast                                       (start_cloud_hps_h2f_lw_axi_master_wlast),   //                                                                        .wlast
-		.start_cloud_hps_h2f_lw_axi_master_wvalid                                      (start_cloud_hps_h2f_lw_axi_master_wvalid),  //                                                                        .wvalid
-		.start_cloud_hps_h2f_lw_axi_master_wready                                      (start_cloud_hps_h2f_lw_axi_master_wready),  //                                                                        .wready
-		.start_cloud_hps_h2f_lw_axi_master_bid                                         (start_cloud_hps_h2f_lw_axi_master_bid),     //                                                                        .bid
-		.start_cloud_hps_h2f_lw_axi_master_bresp                                       (start_cloud_hps_h2f_lw_axi_master_bresp),   //                                                                        .bresp
-		.start_cloud_hps_h2f_lw_axi_master_bvalid                                      (start_cloud_hps_h2f_lw_axi_master_bvalid),  //                                                                        .bvalid
-		.start_cloud_hps_h2f_lw_axi_master_bready                                      (start_cloud_hps_h2f_lw_axi_master_bready),  //                                                                        .bready
-		.start_cloud_hps_h2f_lw_axi_master_arid                                        (start_cloud_hps_h2f_lw_axi_master_arid),    //                                                                        .arid
-		.start_cloud_hps_h2f_lw_axi_master_araddr                                      (start_cloud_hps_h2f_lw_axi_master_araddr),  //                                                                        .araddr
-		.start_cloud_hps_h2f_lw_axi_master_arlen                                       (start_cloud_hps_h2f_lw_axi_master_arlen),   //                                                                        .arlen
-		.start_cloud_hps_h2f_lw_axi_master_arsize                                      (start_cloud_hps_h2f_lw_axi_master_arsize),  //                                                                        .arsize
-		.start_cloud_hps_h2f_lw_axi_master_arburst                                     (start_cloud_hps_h2f_lw_axi_master_arburst), //                                                                        .arburst
-		.start_cloud_hps_h2f_lw_axi_master_arlock                                      (start_cloud_hps_h2f_lw_axi_master_arlock),  //                                                                        .arlock
-		.start_cloud_hps_h2f_lw_axi_master_arcache                                     (start_cloud_hps_h2f_lw_axi_master_arcache), //                                                                        .arcache
-		.start_cloud_hps_h2f_lw_axi_master_arprot                                      (start_cloud_hps_h2f_lw_axi_master_arprot),  //                                                                        .arprot
-		.start_cloud_hps_h2f_lw_axi_master_arvalid                                     (start_cloud_hps_h2f_lw_axi_master_arvalid), //                                                                        .arvalid
-		.start_cloud_hps_h2f_lw_axi_master_arready                                     (start_cloud_hps_h2f_lw_axi_master_arready), //                                                                        .arready
-		.start_cloud_hps_h2f_lw_axi_master_rid                                         (start_cloud_hps_h2f_lw_axi_master_rid),     //                                                                        .rid
-		.start_cloud_hps_h2f_lw_axi_master_rdata                                       (start_cloud_hps_h2f_lw_axi_master_rdata),   //                                                                        .rdata
-		.start_cloud_hps_h2f_lw_axi_master_rresp                                       (start_cloud_hps_h2f_lw_axi_master_rresp),   //                                                                        .rresp
-		.start_cloud_hps_h2f_lw_axi_master_rlast                                       (start_cloud_hps_h2f_lw_axi_master_rlast),   //                                                                        .rlast
-		.start_cloud_hps_h2f_lw_axi_master_rvalid                                      (start_cloud_hps_h2f_lw_axi_master_rvalid),  //                                                                        .rvalid
-		.start_cloud_hps_h2f_lw_axi_master_rready                                      (start_cloud_hps_h2f_lw_axi_master_rready),  //                                                                        .rready
-		.clk_0_clk_clk                                                                 (clk_clk),                                   //                                                               clk_0_clk.clk
-		.ledr_pio_reset_reset_bridge_in_reset_reset                                    (rst_controller_reset_out_reset),            //                                    ledr_pio_reset_reset_bridge_in_reset.reset
-		.start_cloud_hps_h2f_lw_axi_master_agent_clk_reset_reset_bridge_in_reset_reset (rst_controller_001_reset_out_reset),        // start_cloud_hps_h2f_lw_axi_master_agent_clk_reset_reset_bridge_in_reset.reset
-		.HEX0_2_pio_s1_address                                                         (mm_interconnect_0_hex0_2_pio_s1_address),   //                                                           HEX0_2_pio_s1.address
-		.HEX0_2_pio_s1_readdata                                                        (mm_interconnect_0_hex0_2_pio_s1_readdata),  //                                                                        .readdata
-		.HEX3_5_pio_s1_address                                                         (mm_interconnect_0_hex3_5_pio_s1_address),   //                                                           HEX3_5_pio_s1.address
-		.HEX3_5_pio_s1_readdata                                                        (mm_interconnect_0_hex3_5_pio_s1_readdata),  //                                                                        .readdata
-		.key_pio_s1_address                                                            (mm_interconnect_0_key_pio_s1_address),      //                                                              key_pio_s1.address
-		.key_pio_s1_write                                                              (mm_interconnect_0_key_pio_s1_write),        //                                                                        .write
-		.key_pio_s1_readdata                                                           (mm_interconnect_0_key_pio_s1_readdata),     //                                                                        .readdata
-		.key_pio_s1_writedata                                                          (mm_interconnect_0_key_pio_s1_writedata),    //                                                                        .writedata
-		.key_pio_s1_chipselect                                                         (mm_interconnect_0_key_pio_s1_chipselect),   //                                                                        .chipselect
-		.ledr_pio_s1_address                                                           (mm_interconnect_0_ledr_pio_s1_address),     //                                                             ledr_pio_s1.address
-		.ledr_pio_s1_readdata                                                          (mm_interconnect_0_ledr_pio_s1_readdata),    //                                                                        .readdata
-		.sw_pio_s1_address                                                             (mm_interconnect_0_sw_pio_s1_address),       //                                                               sw_pio_s1.address
-		.sw_pio_s1_write                                                               (mm_interconnect_0_sw_pio_s1_write),         //                                                                        .write
-		.sw_pio_s1_readdata                                                            (mm_interconnect_0_sw_pio_s1_readdata),      //                                                                        .readdata
-		.sw_pio_s1_writedata                                                           (mm_interconnect_0_sw_pio_s1_writedata),     //                                                                        .writedata
-		.sw_pio_s1_chipselect                                                          (mm_interconnect_0_sw_pio_s1_chipselect)     //                                                                        .chipselect
+		.start_cloud_hps_h2f_lw_axi_master_awid                                        (start_cloud_hps_h2f_lw_axi_master_awid),     //                                       start_cloud_hps_h2f_lw_axi_master.awid
+		.start_cloud_hps_h2f_lw_axi_master_awaddr                                      (start_cloud_hps_h2f_lw_axi_master_awaddr),   //                                                                        .awaddr
+		.start_cloud_hps_h2f_lw_axi_master_awlen                                       (start_cloud_hps_h2f_lw_axi_master_awlen),    //                                                                        .awlen
+		.start_cloud_hps_h2f_lw_axi_master_awsize                                      (start_cloud_hps_h2f_lw_axi_master_awsize),   //                                                                        .awsize
+		.start_cloud_hps_h2f_lw_axi_master_awburst                                     (start_cloud_hps_h2f_lw_axi_master_awburst),  //                                                                        .awburst
+		.start_cloud_hps_h2f_lw_axi_master_awlock                                      (start_cloud_hps_h2f_lw_axi_master_awlock),   //                                                                        .awlock
+		.start_cloud_hps_h2f_lw_axi_master_awcache                                     (start_cloud_hps_h2f_lw_axi_master_awcache),  //                                                                        .awcache
+		.start_cloud_hps_h2f_lw_axi_master_awprot                                      (start_cloud_hps_h2f_lw_axi_master_awprot),   //                                                                        .awprot
+		.start_cloud_hps_h2f_lw_axi_master_awvalid                                     (start_cloud_hps_h2f_lw_axi_master_awvalid),  //                                                                        .awvalid
+		.start_cloud_hps_h2f_lw_axi_master_awready                                     (start_cloud_hps_h2f_lw_axi_master_awready),  //                                                                        .awready
+		.start_cloud_hps_h2f_lw_axi_master_wid                                         (start_cloud_hps_h2f_lw_axi_master_wid),      //                                                                        .wid
+		.start_cloud_hps_h2f_lw_axi_master_wdata                                       (start_cloud_hps_h2f_lw_axi_master_wdata),    //                                                                        .wdata
+		.start_cloud_hps_h2f_lw_axi_master_wstrb                                       (start_cloud_hps_h2f_lw_axi_master_wstrb),    //                                                                        .wstrb
+		.start_cloud_hps_h2f_lw_axi_master_wlast                                       (start_cloud_hps_h2f_lw_axi_master_wlast),    //                                                                        .wlast
+		.start_cloud_hps_h2f_lw_axi_master_wvalid                                      (start_cloud_hps_h2f_lw_axi_master_wvalid),   //                                                                        .wvalid
+		.start_cloud_hps_h2f_lw_axi_master_wready                                      (start_cloud_hps_h2f_lw_axi_master_wready),   //                                                                        .wready
+		.start_cloud_hps_h2f_lw_axi_master_bid                                         (start_cloud_hps_h2f_lw_axi_master_bid),      //                                                                        .bid
+		.start_cloud_hps_h2f_lw_axi_master_bresp                                       (start_cloud_hps_h2f_lw_axi_master_bresp),    //                                                                        .bresp
+		.start_cloud_hps_h2f_lw_axi_master_bvalid                                      (start_cloud_hps_h2f_lw_axi_master_bvalid),   //                                                                        .bvalid
+		.start_cloud_hps_h2f_lw_axi_master_bready                                      (start_cloud_hps_h2f_lw_axi_master_bready),   //                                                                        .bready
+		.start_cloud_hps_h2f_lw_axi_master_arid                                        (start_cloud_hps_h2f_lw_axi_master_arid),     //                                                                        .arid
+		.start_cloud_hps_h2f_lw_axi_master_araddr                                      (start_cloud_hps_h2f_lw_axi_master_araddr),   //                                                                        .araddr
+		.start_cloud_hps_h2f_lw_axi_master_arlen                                       (start_cloud_hps_h2f_lw_axi_master_arlen),    //                                                                        .arlen
+		.start_cloud_hps_h2f_lw_axi_master_arsize                                      (start_cloud_hps_h2f_lw_axi_master_arsize),   //                                                                        .arsize
+		.start_cloud_hps_h2f_lw_axi_master_arburst                                     (start_cloud_hps_h2f_lw_axi_master_arburst),  //                                                                        .arburst
+		.start_cloud_hps_h2f_lw_axi_master_arlock                                      (start_cloud_hps_h2f_lw_axi_master_arlock),   //                                                                        .arlock
+		.start_cloud_hps_h2f_lw_axi_master_arcache                                     (start_cloud_hps_h2f_lw_axi_master_arcache),  //                                                                        .arcache
+		.start_cloud_hps_h2f_lw_axi_master_arprot                                      (start_cloud_hps_h2f_lw_axi_master_arprot),   //                                                                        .arprot
+		.start_cloud_hps_h2f_lw_axi_master_arvalid                                     (start_cloud_hps_h2f_lw_axi_master_arvalid),  //                                                                        .arvalid
+		.start_cloud_hps_h2f_lw_axi_master_arready                                     (start_cloud_hps_h2f_lw_axi_master_arready),  //                                                                        .arready
+		.start_cloud_hps_h2f_lw_axi_master_rid                                         (start_cloud_hps_h2f_lw_axi_master_rid),      //                                                                        .rid
+		.start_cloud_hps_h2f_lw_axi_master_rdata                                       (start_cloud_hps_h2f_lw_axi_master_rdata),    //                                                                        .rdata
+		.start_cloud_hps_h2f_lw_axi_master_rresp                                       (start_cloud_hps_h2f_lw_axi_master_rresp),    //                                                                        .rresp
+		.start_cloud_hps_h2f_lw_axi_master_rlast                                       (start_cloud_hps_h2f_lw_axi_master_rlast),    //                                                                        .rlast
+		.start_cloud_hps_h2f_lw_axi_master_rvalid                                      (start_cloud_hps_h2f_lw_axi_master_rvalid),   //                                                                        .rvalid
+		.start_cloud_hps_h2f_lw_axi_master_rready                                      (start_cloud_hps_h2f_lw_axi_master_rready),   //                                                                        .rready
+		.clk_0_clk_clk                                                                 (clk_clk),                                    //                                                               clk_0_clk.clk
+		.ledr_pio_reset_reset_bridge_in_reset_reset                                    (rst_controller_reset_out_reset),             //                                    ledr_pio_reset_reset_bridge_in_reset.reset
+		.start_cloud_hps_h2f_lw_axi_master_agent_clk_reset_reset_bridge_in_reset_reset (rst_controller_001_reset_out_reset),         // start_cloud_hps_h2f_lw_axi_master_agent_clk_reset_reset_bridge_in_reset.reset
+		.HEX0_2_pio_s1_address                                                         (mm_interconnect_0_hex0_2_pio_s1_address),    //                                                           HEX0_2_pio_s1.address
+		.HEX0_2_pio_s1_readdata                                                        (mm_interconnect_0_hex0_2_pio_s1_readdata),   //                                                                        .readdata
+		.HEX3_5_pio_s1_address                                                         (mm_interconnect_0_hex3_5_pio_s1_address),    //                                                           HEX3_5_pio_s1.address
+		.HEX3_5_pio_s1_readdata                                                        (mm_interconnect_0_hex3_5_pio_s1_readdata),   //                                                                        .readdata
+		.key_pio_s1_address                                                            (mm_interconnect_0_key_pio_s1_address),       //                                                              key_pio_s1.address
+		.key_pio_s1_write                                                              (mm_interconnect_0_key_pio_s1_write),         //                                                                        .write
+		.key_pio_s1_readdata                                                           (mm_interconnect_0_key_pio_s1_readdata),      //                                                                        .readdata
+		.key_pio_s1_writedata                                                          (mm_interconnect_0_key_pio_s1_writedata),     //                                                                        .writedata
+		.key_pio_s1_chipselect                                                         (mm_interconnect_0_key_pio_s1_chipselect),    //                                                                        .chipselect
+		.ledr_pio_s1_address                                                           (mm_interconnect_0_ledr_pio_s1_address),      //                                                             ledr_pio_s1.address
+		.ledr_pio_s1_readdata                                                          (mm_interconnect_0_ledr_pio_s1_readdata),     //                                                                        .readdata
+		.sw_pio_s1_address                                                             (mm_interconnect_0_sw_pio_s1_address),        //                                                               sw_pio_s1.address
+		.sw_pio_s1_write                                                               (mm_interconnect_0_sw_pio_s1_write),          //                                                                        .write
+		.sw_pio_s1_readdata                                                            (mm_interconnect_0_sw_pio_s1_readdata),       //                                                                        .readdata
+		.sw_pio_s1_writedata                                                           (mm_interconnect_0_sw_pio_s1_writedata),      //                                                                        .writedata
+		.sw_pio_s1_chipselect                                                          (mm_interconnect_0_sw_pio_s1_chipselect),     //                                                                        .chipselect
+		.vga_user_pio_s1_address                                                       (mm_interconnect_0_vga_user_pio_s1_address),  //                                                         vga_user_pio_s1.address
+		.vga_user_pio_s1_readdata                                                      (mm_interconnect_0_vga_user_pio_s1_readdata)  //                                                                        .readdata
 	);
 
 	altera_reset_controller #(

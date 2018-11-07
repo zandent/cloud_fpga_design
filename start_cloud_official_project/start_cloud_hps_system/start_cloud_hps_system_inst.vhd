@@ -30,7 +30,8 @@
 			memory_mem_dm                 : out   std_logic;                                        -- mem_dm
 			memory_oct_rzqin              : in    std_logic                     := 'X';             -- oct_rzqin
 			reset_reset_n                 : in    std_logic                     := 'X';             -- reset_n
-			sw_export                     : out   std_logic_vector(9 downto 0)                      -- export
+			sw_export                     : out   std_logic_vector(9 downto 0);                     -- export
+			vga_user_export               : in    std_logic_vector(21 downto 0) := (others => 'X')  -- export
 		);
 	end component start_cloud_hps_system;
 
@@ -66,6 +67,7 @@
 			memory_mem_dm                 => CONNECTED_TO_memory_mem_dm,                 --         .mem_dm
 			memory_oct_rzqin              => CONNECTED_TO_memory_oct_rzqin,              --         .oct_rzqin
 			reset_reset_n                 => CONNECTED_TO_reset_reset_n,                 --    reset.reset_n
-			sw_export                     => CONNECTED_TO_sw_export                      --       sw.export
+			sw_export                     => CONNECTED_TO_sw_export,                     --       sw.export
+			vga_user_export               => CONNECTED_TO_vga_user_export                -- vga_user.export
 		);
 

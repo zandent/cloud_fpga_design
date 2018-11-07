@@ -1,5 +1,5 @@
 Flow report for start_cloud_top_level
-Sun Sep 23 23:20:20 2018
+Tue Nov  6 22:05:47 2018
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -40,15 +40,15 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Sun Sep 23 23:20:20 2018       ;
+; Flow Status                     ; Successful - Tue Nov  6 22:05:47 2018       ;
 ; Quartus Prime Version           ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                   ; start_cloud_top_level                       ;
 ; Top-level Entity Name           ; start_cloud_top_level                       ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CSEMA5F31C6                                ;
 ; Timing Models                   ; Final                                       ;
-; Logic utilization (in ALMs)     ; 655 / 32,070 ( 2 % )                        ;
-; Total registers                 ; 953                                         ;
+; Logic utilization (in ALMs)     ; 705 / 32,070 ( 2 % )                        ;
+; Total registers                 ; 1039                                        ;
 ; Total pins                      ; 98 / 457 ( 21 % )                           ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 0 / 4,065,280 ( 0 % )                       ;
@@ -67,7 +67,7 @@ refer to the applicable agreement for further details.
 +-------------------+-----------------------+
 ; Option            ; Setting               ;
 +-------------------+-----------------------+
-; Start date & time ; 09/23/2018 23:15:45   ;
+; Start date & time ; 11/06/2018 22:01:12   ;
 ; Main task         ; Compilation           ;
 ; Revision Name     ; start_cloud_top_level ;
 +-------------------+-----------------------+
@@ -78,7 +78,7 @@ refer to the applicable agreement for further details.
 +---------------------------------------+--------------------------------------------------------------------------------------+---------------+------------------------------------------------------+------------+
 ; Assignment Name                       ; Value                                                                                ; Default Value ; Entity Name                                          ; Section Id ;
 +---------------------------------------+--------------------------------------------------------------------------------------+---------------+------------------------------------------------------+------------+
-; COMPILER_SIGNATURE_ID                 ; 172308996745943.153775894308429                                                      ; --            ; --                                                   ; --         ;
+; COMPILER_SIGNATURE_ID                 ; 172308996745943.154155967026659                                                      ; --            ; --                                                   ; --         ;
 ; ECO_REGENERATE_REPORT                 ; On                                                                                   ; Off           ; --                                                   ; --         ;
 ; HPS_ISW_FILE                          ; start_cloud_hps_system/synthesis/submodules/sequencer/tclrpt.pre.h                   ; --            ; start_cloud_hps_system_start_cloud_hps_hps_io_border ; --         ;
 ; HPS_ISW_FILE                          ; start_cloud_hps_system/synthesis/submodules/sequencer/tclrpt.pre.c                   ; --            ; start_cloud_hps_system_start_cloud_hps_hps_io_border ; --         ;
@@ -120,7 +120,7 @@ refer to the applicable agreement for further details.
 ; PROJECT_OUTPUT_DIRECTORY              ; output_files                                                                         ; --            ; --                                                   ; --         ;
 ; SLD_FILE                              ; start_cloud_hps_system/synthesis/start_cloud_hps_system.regmap                       ; --            ; --                                                   ; --         ;
 ; SLD_FILE                              ; start_cloud_hps_system/synthesis/start_cloud_hps_system.debuginfo                    ; --            ; --                                                   ; --         ;
-; SLD_INFO                              ; QSYS_NAME start_cloud_hps_system HAS_SOPCINFO 1 GENERATION_ID 1535050983             ; --            ; start_cloud_hps_system                               ; --         ;
+; SLD_INFO                              ; QSYS_NAME start_cloud_hps_system HAS_SOPCINFO 1 GENERATION_ID 1541558739             ; --            ; start_cloud_hps_system                               ; --         ;
 ; SOPCINFO_FILE                         ; start_cloud_hps_system/synthesis/../../start_cloud_hps_system.sopcinfo               ; --            ; --                                                   ; --         ;
 ; SYNTHESIS_ONLY_QIP                    ; On                                                                                   ; --            ; --                                                   ; --         ;
 ; USE_DLL_FREQUENCY_FOR_DQS_DELAY_CHAIN ; On                                                                                   ; Off           ; --                                                   ; --         ;
@@ -132,10 +132,10 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:21     ; 1.0                     ; 1147 MB             ; 00:00:36                           ;
-; Fitter               ; 00:01:01     ; 1.1                     ; 3164 MB             ; 00:01:37                           ;
-; Assembler            ; 00:00:09     ; 1.0                     ; 1011 MB             ; 00:00:09                           ;
-; Total                ; 00:01:31     ; --                      ; --                  ; 00:02:22                           ;
+; Analysis & Synthesis ; 00:00:22     ; 1.0                     ; 1185 MB             ; 00:00:38                           ;
+; Fitter               ; 00:01:01     ; 1.1                     ; 3165 MB             ; 00:01:36                           ;
+; Assembler            ; 00:00:09     ; 1.0                     ; 1018 MB             ; 00:00:09                           ;
+; Total                ; 00:01:32     ; --                      ; --                  ; 00:02:23                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -144,9 +144,9 @@ refer to the applicable agreement for further details.
 +----------------------+------------------+----------------+------------+----------------+
 ; Module Name          ; Machine Hostname ; OS Name        ; OS Version ; Processor type ;
 +----------------------+------------------+----------------+------------+----------------+
-; Analysis & Synthesis ; simon-XPS        ; Ubuntu 16.04.4 ; 16         ; x86_64         ;
-; Fitter               ; simon-XPS        ; Ubuntu 16.04.4 ; 16         ; x86_64         ;
-; Assembler            ; simon-XPS        ; Ubuntu 16.04.4 ; 16         ; x86_64         ;
+; Analysis & Synthesis ; simon-XPS        ; Ubuntu 16.04.5 ; 16         ; x86_64         ;
+; Fitter               ; simon-XPS        ; Ubuntu 16.04.5 ; 16         ; x86_64         ;
+; Assembler            ; simon-XPS        ; Ubuntu 16.04.5 ; 16         ; x86_64         ;
 +----------------------+------------------+----------------+------------+----------------+
 
 

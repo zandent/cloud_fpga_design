@@ -30,7 +30,8 @@ module start_cloud_hps_system (
 	memory_mem_dm,
 	memory_oct_rzqin,
 	reset_reset_n,
-	sw_export);	
+	sw_export,
+	vga_user_export);	
 
 	input		clk_clk;
 	input	[20:0]	hex0_2_export;
@@ -63,4 +64,5 @@ module start_cloud_hps_system (
 	input		memory_oct_rzqin;
 	input		reset_reset_n;
 	output	[9:0]	sw_export;
+	input	[21:0]	vga_user_export;
 endmodule

@@ -38,6 +38,12 @@ module start_cloud_top_level(
 	wire [9:0] SW;
 	wire [3:0] KEY;
 
+	wire vga_resolution_mode; // '0' represents 160x120, '1' represents 320x240
+	wire [2:0] colour;
+	wire [8:0] x; //bit 8 useless if 160x120
+	wire [7:0] y; //bit 7 useless if 160x120
+	wire writeEn;
+
 	start_cloud_hps_system u0 (
 		.clk_clk            (CLOCK_50          ),//    clk.clk
 		.hex0_2_export      ({HEX2,HEX1,HEX0}  ),// hex0_2.export
@@ -69,7 +75,8 @@ module start_cloud_top_level(
 		.memory_mem_dm      (memory_mem_dm     ),//       .mem_dm
 		.memory_oct_rzqin   (memory_oct_rzqin  ),//       .oct_rzqin
 		.reset_reset_n      (1'b1              ),//  reset.reset_n
-		.sw_export          (SW                )//     sw.export
+		.sw_export          (SW                ),//     sw.export
+		.vga_user_export    ({vga_resolution_mode, writeEn, x, y, colour})// vga_user.export
 	);
 
 	fpga_portion u_fpga_portion(
@@ -82,7 +89,12 @@ module start_cloud_top_level(
 		.HEX2 	 (HEX2 ),
 		.HEX3 	 (HEX3 ),
 		.HEX4 	 (HEX4 ),
-		.HEX5 	 (HEX5 )
+		.HEX5 	 (HEX5 ),
+		.vga_resolution_mode(vga_resolution_mode),
+		.colour(colour),
+		.x(x),
+		.y(y),
+		.writeEn(writeEn)
 	);
 
 	
