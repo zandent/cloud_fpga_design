@@ -23,6 +23,7 @@
 #define HEX2_0 0x00000030
 #define HEX5_3 0x00000040
 #define KEY 0x00000020
+#define VGA_USER 0x00000050
 int open_physical (int);
 void * map_physical (int, unsigned int, unsigned int);
 void close_physical (int);
@@ -34,6 +35,7 @@ int main (void){
     volatile int* HEX5_3_ptr;
     volatile int* HEX2_0_ptr;
     volatile int* KEY_ptr;
+    volatile int* VGA_USER_ptr;
     char sendBuff[1024]; 
     int fd = -1; // used to open /dev/mem
     void *LW_virtual; // physical addresses for light-weight bridge
@@ -56,7 +58,7 @@ int main (void){
     HEX5_3_ptr = (unsigned int *) (LW_virtual + HEX5_3);
     KEY_ptr = (unsigned int *) (LW_virtual + KEY);
     HEX2_0_ptr = (unsigned int *) (LW_virtual + HEX2_0);
-
+    VGA_USER_ptr = (unsigned int *) (LW_virtual + VGA_USER);
     //printf("led is %d, sw is %d, HEX5_3 is %d\n", *LEDR_ptr, *SW_ptr, *HEX5_3_ptr);
 /*    char HEX5_3_string[20];
     char HEX2_0_string[20];
