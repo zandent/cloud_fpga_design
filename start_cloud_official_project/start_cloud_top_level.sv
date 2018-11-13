@@ -76,7 +76,7 @@ module start_cloud_top_level(
 		.memory_oct_rzqin   (memory_oct_rzqin  ),//       .oct_rzqin
 		.reset_reset_n      (1'b1              ),//  reset.reset_n
 		.sw_export          (SW                ),//     sw.export
-		.vga_user_export    ({vga_resolution_mode, writeEn, x, y, colour})// vga_user.export
+		.vga_user_export    ({vga_resolution_mode, x, y, colour, writeEn})// vga_user.export
 	);
 
 	fpga_portion u_fpga_portion(

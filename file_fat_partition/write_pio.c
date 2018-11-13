@@ -94,12 +94,12 @@ int main (void){
   //*KEY_ptr = 0;
   while(1)
     { 
-       // *KEY_ptr = *KEY_ptr + 1;
+      // *KEY_ptr = *KEY_ptr + 1;
       // *SW_ptr = 8;        
       //*HEX5_3_ptr = 128*128 * (*SW_ptr);
       //*LEDR_ptr = *SW_ptr;    
       snprintf(sendBuff,sizeof(sendBuff),"%c%d%c%d%c%d%c%d%c%d",'S',*HEX5_3_ptr,',',
-            *HEX2_0_ptr,',',*LEDR_ptr,',',*SW_ptr,',',*KEY_ptr);
+            *HEX2_0_ptr,',',*LEDR_ptr,',',*SW_ptr,',',*KEY_ptr, 'T', *VGA_USER_ptr);
       write(connfd, sendBuff, strlen(sendBuff));
       memset(sendBuff, '0', sizeof(sendBuff));
       //printf("hex5_3 is %d and KEY is %d\n", *HEX5_3_ptr, *KEY_ptr);

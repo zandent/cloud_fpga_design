@@ -1,5 +1,5 @@
 Analysis & Synthesis report for start_cloud_top_level
-Tue Nov  6 22:04:35 2018
+Mon Nov 12 23:32:13 2018
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -367,7 +367,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Tue Nov  6 22:04:35 2018       ;
+; Analysis & Synthesis Status     ; Successful - Mon Nov 12 23:32:13 2018       ;
 ; Quartus Prime Version           ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                   ; start_cloud_top_level                       ;
 ; Top-level Entity Name           ; start_cloud_top_level                       ;
@@ -7829,7 +7829,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Tue Nov  6 22:01:07 2018
+    Info: Processing started: Mon Nov 12 23:28:39 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off start_cloud_top_level -c start_cloud_top_level
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -8116,10 +8116,10 @@ Info (21057): Implemented 2168 device resources after synthesis - the final reso
     Info (21061): Implemented 1809 logic cells
     Info (21066): Implemented 1 delay-locked loops
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 63 warnings
-    Info: Peak virtual memory: 1215 megabytes
-    Info: Processing ended: Tue Nov  6 22:04:35 2018
-    Info: Elapsed time: 00:03:28
-    Info: Total CPU time (on all processors): 00:03:43
+    Info: Peak virtual memory: 1222 megabytes
+    Info: Processing ended: Mon Nov 12 23:32:13 2018
+    Info: Elapsed time: 00:03:34
+    Info: Total CPU time (on all processors): 00:03:50
 
 
 +------------------------------------------+
