@@ -1,0 +1,38 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Cloud_FPGA</title>
+  <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="hexi" class="main-div"></div>
+  <div id="hex" class="main-div"></div>
+  <div id="ledi" class="main-div"></div>
+  <div id="led" class="main-div"></div>
+  <div id="swi" class="main-div"></div>
+  <div id="sw" class="main-div"></div>
+  <div id="keyi" class="main-div"></div>
+  <div id="key" class="main-div"></div>
+  <div id="vcode" class="main-div">
+    <textarea type="text" placeholder="Verilog_Code" id="vcode_content" rows="15"></textarea>
+    <button onclick="compileV()">Compile</button>
+  </div>
+  <div id="vcplog" class="main-divv"></div>
+<script src="https://www.gstatic.com/firebasejs/5.4.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCVMvRP_FaLO4g5WcV8vFA-4gvrNebs1fk",
+    authDomain: "cloud-fpga.firebaseapp.com",
+    databaseURL: "https://cloud-fpga.firebaseio.com",
+    projectId: "cloud-fpga",
+    storageBucket: "cloud-fpga.appspot.com",
+    messagingSenderId: "259300671340"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<script src="index.js"></script>
+</body>
+</html>
